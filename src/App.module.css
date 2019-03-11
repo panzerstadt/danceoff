@@ -1,0 +1,8 @@
+.app {
+  height: 100vh;
+  /* apple iphone x */
+  width: 100%;
+  max-width: 375px;
+  margin: 0 auto;
+  /* border: 1px solid red; */
+}

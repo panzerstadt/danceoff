@@ -1,0 +1,29 @@
+.page {
+  composes: page from "../Layout.module.css";
+  overflow: hidden;
+  z-index: 10;
+}
+
+.hero {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.startBtn {
+  width: 200px;
+  position: absolute;
+  bottom: 30%;
+  background-color: #0ed0d7;
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1.5px solid white;
+}
+
+.startBtn:focus {
+  outline: none;
+}

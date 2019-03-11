@@ -1,0 +1,3 @@
+.page {
+  composes: page from "../Layout.module.css";
+}
