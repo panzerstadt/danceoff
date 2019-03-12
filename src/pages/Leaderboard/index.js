@@ -1,5 +1,9 @@
 import React, { useEffect } from "react";
 import styles from "./index.module.css";
+
+import Rankings from "../../components/Rankings";
+import PostRanking from "../../components/PostRanking";
+
 const Page = () => {
   useEffect(() => {
     // didmount
@@ -9,7 +13,8 @@ const Page = () => {
   }, []);
   return (
     <div className={styles.page}>
-      <p>hey yo leaderboard</p>
+      <Rankings />
+      <PostRanking />
     </div>
   );
 };

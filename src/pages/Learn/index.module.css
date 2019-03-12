@@ -39,7 +39,7 @@
 .seekBtn {
   transition: left 300ms ease;
   position: absolute;
-  top: -8px;
+  top: -6px;
   left: 10px;
   height: 20px;
   width: 20px;

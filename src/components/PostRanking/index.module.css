@@ -1,0 +1,24 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  height: 50px;
+  font-size: 20px;
+}
+
+.formDiv {
+  width: 80%;
+  margin-bottom: 100px;
+}
+
+.formDiv > form > h3 {
+  margin: 0.3rem 0;
+}
+
+.thankYou {
+  margin-top: 50px;
+  width: 80%;
+  margin-bottom: 100px;
+}

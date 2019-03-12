@@ -55,7 +55,7 @@ const Page = () => {
           ? {
               top: 0,
               left: `${value * 100}%`,
-              marginTop: -4,
+              marginTop: -5,
               marginLeft: -8
             }
           : {

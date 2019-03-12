@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 
 import styles from "./index.module.css";
 
+import Button from "../../components/Button";
+
 // assets
 import dance from "../../assets/images/danceoff.png";
 
@@ -15,9 +17,9 @@ const Page = ({ onClick }) => {
   return (
     <div className={styles.page}>
       <img className={styles.hero} src={dance} alt="danceoff!" />
-      <button className={styles.startBtn} onClick={onClick}>
+      <Button theme="intro" onClick={onClick}>
         START
-      </button>
+      </Button>
     </div>
   );
 };

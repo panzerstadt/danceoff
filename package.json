@@ -1,8 +1,11 @@
 {
   "name": "posenet-danceoff",
+  "homepage": "http://panzerstadt.github.io/danceoff",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "dotenv": "^6.2.0",
+    "firebase": "^5.8.6",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-player": "^1.9.3",

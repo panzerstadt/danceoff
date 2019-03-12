@@ -4,3 +4,5 @@ export const COLORS = {
   secondary: "#FF8547",
   highlight: "#BAFFFF"
 };
+
+export const DB_PATH = "danceoff/leaderboard";

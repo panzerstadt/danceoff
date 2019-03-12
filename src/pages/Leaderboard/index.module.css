@@ -1,3 +1,4 @@
 .page {
   composes: page from "../Layout.module.css";
+  justify-content: flex-start;
 }
