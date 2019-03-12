@@ -12,27 +12,27 @@ self.__precacheManifest = [
     "url": "/danceoff/static/media/logo.5d5d9eef.svg"
   },
   {
-    "revision": "61bd90bd4b5b23b0551340327b909f5e",
-    "url": "/danceoff/static/media/danceoff.61bd90bd.png"
+    "revision": "8f298f1ebc624671c1eadab26c38bef5",
+    "url": "/danceoff/static/media/danceoff.8f298f1e.png"
   },
   {
     "revision": "fdcd4bddabb27ab6c5ce",
     "url": "/danceoff/static/js/runtime~main.6509b7b9.js"
   },
   {
-    "revision": "c7f1aa14a90d5986e132",
-    "url": "/danceoff/static/js/main.683ad88d.chunk.js"
+    "revision": "7a34de96d36fd25075a2",
+    "url": "/danceoff/static/js/main.aa42af30.chunk.js"
   },
   {
-    "revision": "94671fc91264ae7ec070",
-    "url": "/danceoff/static/js/2.e0a317aa.chunk.js"
+    "revision": "53b863de5b88daec03d8",
+    "url": "/danceoff/static/js/2.b29e07c9.chunk.js"
   },
   {
-    "revision": "c7f1aa14a90d5986e132",
-    "url": "/danceoff/static/css/main.b16262de.chunk.css"
+    "revision": "7a34de96d36fd25075a2",
+    "url": "/danceoff/static/css/main.a483005b.chunk.css"
   },
   {
-    "revision": "624820cad175dec2941c48c75f5d6ea5",
+    "revision": "b25add3ebd4f3f294c2e1bd39f44188e",
     "url": "/danceoff/index.html"
   }
 ];
