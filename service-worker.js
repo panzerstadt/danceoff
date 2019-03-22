@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/danceoff/precache-manifest.bc17289a586ba3dc4e57b4b207003d78.js"
+  "/danceoff/precache-manifest.b9ce9a5dd0b06f3945c61c6e2cf7501c.js"
 );
 
 workbox.clientsClaim();
