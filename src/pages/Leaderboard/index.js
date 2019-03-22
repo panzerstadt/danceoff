@@ -4,7 +4,7 @@ import styles from "./index.module.css";
 import Rankings from "../../components/Rankings";
 import PostRanking from "../../components/PostRanking";
 
-const Page = () => {
+const Page = ({ score }) => {
   useEffect(() => {
     // didmount
     console.log("mounted this page yo");
@@ -14,7 +14,7 @@ const Page = () => {
   return (
     <div className={styles.page}>
       <Rankings />
-      <PostRanking />
+      <PostRanking score={score} />
     </div>
   );
 };
