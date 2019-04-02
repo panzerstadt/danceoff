@@ -12,8 +12,8 @@ import { isMobile, drawKeypoints, drawSkeleton } from "./helpers/utils";
 import scoreSimilarity from "./helpers/scorer";
 
 // ghost (the dance move you're competing with)
-import GWARA_GIRL from "./data/GWARA_GIRL_2.json";
-const GHOST = GWARA_GIRL.poseRecords;
+import DANCER from "./data/ROBOT_RAHMAT.json";
+const GHOST = DANCER.poseRecords;
 
 export default class PoseNetComponent extends Component {
   static defaultProps = {
@@ -25,14 +25,14 @@ export default class PoseNetComponent extends Component {
     showSkeleton: true,
     showPoints: true,
     minPoseConfidence: 0.1,
-    minPartConfidence: 0.5,
-    maxPoseDetections: 10,
+    minPartConfidence: 0.1,
+    maxPoseDetections: 2,
     nmsRadius: 20.0,
     outputStride: 16,
     imageScaleFactor: 0.5,
     skeletonColor: "aqua",
-    ghostColor: "lightgrey",
-    skeletonLineWidth: 2,
+    ghostColor: "yellow",
+    skeletonLineWidth: 8,
     loadingText: "Loading pose detector...",
     frontCamera: true,
     stop: false,
@@ -57,6 +57,7 @@ export default class PoseNetComponent extends Component {
   };
   camera = undefined;
   timeout = undefined;
+  good_keypoints = {};
   previousDelta = 0;
   lastScore = 0;
   traceVideo = this.traceVideo.bind(this);
@@ -223,6 +224,7 @@ export default class PoseNetComponent extends Component {
 
     const net = this.net;
     const video = this.video;
+
     const flipped = forceFlipHorizontal
       ? forceFlipHorizontal
       : frontCamera
@@ -328,18 +330,26 @@ export default class PoseNetComponent extends Component {
           const g_score = GHOST[this.state.ghostIndex].score;
 
           if (g_score >= minPoseConfidence) {
-            if (showPoints) {
-              drawKeypoints(g_keypoints, minPartConfidence, ghostColor, ctx);
-            }
-            if (showSkeleton) {
-              drawSkeleton(
-                g_keypoints,
-                minPartConfidence,
-                ghostColor,
-                skeletonLineWidth,
-                ctx
-              );
-            }
+            // only update keypoints when it passes the confidene threshold
+            this.good_keypoints = g_keypoints;
+          }
+          // else use the previous one
+          if (showPoints) {
+            drawKeypoints(
+              this.good_keypoints,
+              minPartConfidence,
+              ghostColor,
+              ctx
+            );
+          }
+          if (showSkeleton) {
+            drawSkeleton(
+              this.good_keypoints,
+              minPartConfidence,
+              ghostColor,
+              skeletonLineWidth,
+              ctx
+            );
           }
 
           // SCORE USER AGAINST GHOST
@@ -349,6 +359,8 @@ export default class PoseNetComponent extends Component {
             this.state.ghostIndex, // TODO: change this
             GHOST
           );
+
+          console.log(similarity.score.highest);
 
           const score = parseInt(similarity.score.normalized.toFixed(2));
           this.setState(prev => ({

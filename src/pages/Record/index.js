@@ -5,7 +5,8 @@ import Posenet from "../../components/Posenet";
 
 const MAX_WIDTH = 375;
 
-const Page = ({ onScore }) => {
+const Page = ({ onScore, onRestart }) => {
+  const [restarting, setRestarting] = useState(false);
   const [score, setScore] = useState(0);
   const [phase, setPhase] = useState("");
   const [dims, setDims] = useState({ height: 0, width: 0 });
@@ -26,10 +27,17 @@ const Page = ({ onScore }) => {
   const handleClick = type => {
     if (type === "start") {
       setPhase("play");
+      setRestarting(false);
     } else if (type === "end") {
       setPhase("submit");
+      setRestarting(true);
       if (onScore) {
         onScore(score);
+      }
+    } else if (type === "retry") {
+      setRestarting(true);
+      if (onRestart) {
+        onRestart();
       }
     }
   };
@@ -61,13 +69,15 @@ const Page = ({ onScore }) => {
       return (
         <div className={styles.modalEnd}>
           <p>your score is {score}</p>
-          <p>do do you want to submit?</p>
+          <p>do you want to submit?</p>
+          <button onClick={() => onClick("retry")}>RETRY</button>
           <button onClick={() => onClick(type)}>SUBMIT</button>
         </div>
       );
     } else if (type === "play") {
       return (
         <Posenet
+          restart={restarting}
           onEnd={handleRecordEnd}
           videoWidth={dims.width}
           videoHeight={dims.height}

@@ -25,6 +25,11 @@ const App = () => {
     setPage("compete");
   };
 
+  const handleRestart = () => {
+    setPage("watch"); // TODO: a separate ready page
+    setTimeout(() => setPage("record"), 300);
+  };
+
   const NavRoute = ({ page }) => {
     switch (page) {
       case "home":
@@ -32,7 +37,7 @@ const App = () => {
       case "watch":
         return <Learn />;
       case "record":
-        return <Record onScore={handleScore} />;
+        return <Record onScore={handleScore} onRestart={handleRestart} />;
       case "compete":
         return <Leaderboard score={score} />;
       default:

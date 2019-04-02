@@ -1,6 +1,8 @@
 import { extent } from "d3-array";
 import { cosineSimilarity } from "./cosineSimilarity";
 
+const SCORE_MIN = 0.9;
+
 function remap(value, low1, high1, low2, high2) {
   return low2 + ((high2 - low2) * (value - low1)) / (high1 - low1);
 }
@@ -168,7 +170,7 @@ const scoreSimilarity = (
 
   return {
     score: {
-      normalized: Math.max(remap(highestScore, 0.85, 1.0, 0, 100), 0),
+      normalized: Math.max(remap(highestScore, SCORE_MIN, 1.0, 0, 100), 0),
       highest: highestScore,
       current: currentFrameScore,
       all: scoreFrames
