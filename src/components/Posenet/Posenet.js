@@ -3,7 +3,8 @@
 // main imports
 import React, { Component } from "react";
 import * as posenet from "@tensorflow-models/posenet";
-import { Player } from "video-react";
+
+import Webcam from "react-webcam";
 
 // styles
 import styles from "./index.module.css";
@@ -18,8 +19,8 @@ const GHOST = DANCER.poseRecords;
 
 export default class PoseNetComponent extends Component {
   static defaultProps = {
-    videoWidth: 600,
-    videoHeight: 500,
+    videoWidth: window.innerWidth,
+    videoHeight: window.innerHeight,
     algorithm: "single-pose",
     mobileNetArchitecture: isMobile() ? 0.5 : 1.01,
     showVideo: true,
@@ -54,7 +55,8 @@ export default class PoseNetComponent extends Component {
     score: 0,
     totalScore: 0,
     scoreOpacity: 0,
-    time: Date.now()
+    time: Date.now(),
+    finalDims: { height: 0, width: 0 }
   };
   camera = undefined;
   timeout = undefined;
@@ -125,7 +127,11 @@ export default class PoseNetComponent extends Component {
   };
 
   getVideo = elem => {
-    this.video = elem.video.video;
+    try {
+      this.video = elem.video; // react-webcam
+    } catch (e) {
+      this.video = elem; // html5 video tag
+    }
   };
 
   stopCamera() {
@@ -164,35 +170,48 @@ export default class PoseNetComponent extends Component {
     const mobile = isMobile();
     const frontCamera = this.props.frontCamera;
 
-    console.log(video);
-    console.log(video.width);
-
     video.width = videoWidth;
     video.height = videoHeight;
+    video.style.objectFit = "contain";
 
     // MDN: https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
-    const stream = await navigator.mediaDevices.getUserMedia({
-      audio: false,
-      video: {
-        facingMode: frontCamera ? "user" : { exact: "environment" },
-        width: mobile ? void 0 : videoWidth,
-        height: mobile ? void 0 : videoHeight
-      }
-    });
+    // const stream = await navigator.mediaDevices.getUserMedia({
+    //   audio: false,
+    //   video: {
+    //     facingMode: frontCamera ? "user" : { exact: "environment" },
+    //     // width: videoWidth,
+    //     // height: videoHeight
+    //     width: mobile ? void 0 : videoWidth,
+    //     height: mobile ? void 0 : videoHeight
+    //   }
+    // });
 
-    video.srcObject = stream;
+    // video.srcObject = stream;
 
     return new Promise(resolve => {
       video.onloadedmetadata = () => {
         // Once the video metadata is ready, we can start streaming video
         video.play();
+
+        const finalDims = {
+          height: video.videoHeight, // actual video running
+          width: video.videoWidth
+        };
+
+        video.width = video.videoWidth;
+        video.height = video.videoHeight;
+
+        this.setState({ finalDims });
         resolve(video); // promise returns video
       };
     });
   }
 
   detectPose() {
-    const { videoWidth, videoHeight } = this.props;
+    //const { videoWidth, videoHeight } = this.props;
+    const videoWidth = this.state.finalDims.width;
+    const videoHeight = this.state.finalDims.height;
+
     const canvas = this.canvas;
     const ctx = canvas.getContext("2d");
 
@@ -212,8 +231,8 @@ export default class PoseNetComponent extends Component {
       maxPoseDetections,
       minPartConfidence,
       nmsRadius,
-      videoWidth,
-      videoHeight,
+      //videoWidth,
+      //videoHeight,
       showVideo,
       showPoints,
       showSkeleton,
@@ -225,6 +244,11 @@ export default class PoseNetComponent extends Component {
       maxFPS,
       compete
     } = this.props;
+
+    const { finalDims } = this.state;
+
+    const videoHeight = finalDims.height;
+    const videoWidth = finalDims.width;
 
     const net = this.net;
     const video = this.video;
@@ -475,10 +499,14 @@ export default class PoseNetComponent extends Component {
       <div className={styles.posenet}>
         {this.props.compete && <Score />}
         {loading}
-        <Player ref={this.getVideo} playsInline />
-        {/* <video playsInline ref={this.getVideo} /> */}
-        {/* <Webcam ref={this.getVideo} /> */}
-        <canvas ref={this.getCanvas} />
+
+        <div
+          className={styles.posenetCanvasContainer}
+          style={{ width: this.props.videoWidth, overflow: "hidden" }}
+        >
+          <Webcam ref={this.getVideo} playsInline />
+          <canvas className={styles.posenetCanvas} ref={this.getCanvas} />
+        </div>
       </div>
     );
   }

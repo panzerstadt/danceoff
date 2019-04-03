@@ -1,8 +1,9 @@
 // ref: https://github.com/jscriptcoder/tfjs-posenet/blob/master/src/PoseNet/index.jsx
 
 // main imports
-import React, { Component } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import * as posenet from "@tensorflow-models/posenet";
+import Webcam from "react-webcam";
 
 // styles
 import styles from "./index.module.css";
@@ -15,12 +16,69 @@ import scoreSimilarity from "./helpers/scorer";
 import DANCER from "./data/ROBOT_RAHMAT.json";
 const GHOST = DANCER.poseRecords;
 
+const WebcamSource = ({ height, width, facingMode }) => {
+  const webcamRef = useRef();
+
+  const [dims, setDims] = useState({ height: 0, width: 0 });
+
+  useEffect(() => {
+    const setupCamera = async () => {
+      // MDN: https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        const e1 =
+          "Browser API navigator.mediaDevices.getUserMedia not available";
+        this.setState({ error_messages: e1 });
+        throw e1;
+      }
+
+      const video = webcamRef.current.video;
+
+      console.log(video);
+    };
+
+    const v = webcamRef.current.video;
+    const height = v.height;
+    const width = v.width;
+
+    setDims({ height: height, width: width });
+    setupCamera();
+  }, []);
+
+  const videoConstraints = {
+    width: width,
+    height: height,
+    facingMode: facingMode
+  };
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "flex-start"
+      }}
+    >
+      <Webcam
+        ref={webcamRef}
+        audio={false}
+        height={height}
+        width={width}
+        videoConstraints={videoConstraints}
+      />
+    </div>
+  );
+};
+
 const Posenet = props => {
   console.log(props);
+
   return (
-    <div>
-      <p>hey</p>
-    </div>
+    <WebcamSource
+      height={props.videoHeight}
+      width={props.videoWidth}
+      facingMode={props.frontCamera ? "user" : "environment"}
+    />
   );
 };
 
