@@ -3,6 +3,7 @@
 // main imports
 import React, { Component } from "react";
 import * as posenet from "@tensorflow-models/posenet";
+import { Player } from "video-react";
 
 // styles
 import styles from "./index.module.css";
@@ -124,7 +125,7 @@ export default class PoseNetComponent extends Component {
   };
 
   getVideo = elem => {
-    this.video = elem;
+    this.video = elem.video.video;
   };
 
   stopCamera() {
@@ -162,6 +163,9 @@ export default class PoseNetComponent extends Component {
     const video = this.video;
     const mobile = isMobile();
     const frontCamera = this.props.frontCamera;
+
+    console.log(video);
+    console.log(video.width);
 
     video.width = videoWidth;
     video.height = videoHeight;
@@ -471,7 +475,8 @@ export default class PoseNetComponent extends Component {
       <div className={styles.posenet}>
         {this.props.compete && <Score />}
         {loading}
-        <video playsInline ref={this.getVideo} />
+        <Player ref={this.getVideo} playsInline />
+        {/* <video playsInline ref={this.getVideo} /> */}
         {/* <Webcam ref={this.getVideo} /> */}
         <canvas ref={this.getCanvas} />
       </div>

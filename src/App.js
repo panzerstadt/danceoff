@@ -17,7 +17,7 @@ import Record from "./pages/Record";
 import Leaderboard from "./pages/Leaderboard";
 
 const App = () => {
-  const [page, setPage] = useState("home");
+  const [page, setPage] = useState("record");
   const [score, setScore] = useState(0);
 
   const handleScore = score => {
