@@ -135,4 +135,5 @@
 .posenetCanvas {
   height: 100vh;
   object-fit: cover;
+  transform: translate(200px, -100px);
 }

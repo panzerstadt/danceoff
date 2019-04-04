@@ -5,7 +5,7 @@ import { Direction, Slider, PlayerIcon } from "react-player-controls";
 import styles from "./index.module.css";
 
 import { ReactComponent as LoopIcon } from "../../assets/svg/loop.svg";
-import video from "../../assets/videos/video.mp4";
+import { DANCE_VIDEO as video } from "../../lib/constants";
 
 const Page = () => {
   const [loop, setLoop] = useState(true);
