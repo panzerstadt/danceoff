@@ -1,17 +1,17 @@
 {
-  "main.css": "/danceoff/static/css/main.e92f9240.chunk.css",
-  "main.js": "/danceoff/static/js/main.96445a48.chunk.js",
-  "main.js.map": "/danceoff/static/js/main.96445a48.chunk.js.map",
+  "main.css": "/danceoff/static/css/main.9149d210.chunk.css",
+  "main.js": "/danceoff/static/js/main.b592b10f.chunk.js",
+  "main.js.map": "/danceoff/static/js/main.b592b10f.chunk.js.map",
   "runtime~main.js": "/danceoff/static/js/runtime~main.6509b7b9.js",
   "runtime~main.js.map": "/danceoff/static/js/runtime~main.6509b7b9.js.map",
-  "static/js/2.3c83f21d.chunk.js": "/danceoff/static/js/2.3c83f21d.chunk.js",
-  "static/js/2.3c83f21d.chunk.js.map": "/danceoff/static/js/2.3c83f21d.chunk.js.map",
+  "static/js/2.d354a59e.chunk.js": "/danceoff/static/js/2.d354a59e.chunk.js",
+  "static/js/2.d354a59e.chunk.js.map": "/danceoff/static/js/2.d354a59e.chunk.js.map",
   "index.html": "/danceoff/index.html",
-  "precache-manifest.d9d3ef14616bb7c76350846f7cf23f71.js": "/danceoff/precache-manifest.d9d3ef14616bb7c76350846f7cf23f71.js",
+  "precache-manifest.3d16cdb16c261eaa903c9b358b8af6da.js": "/danceoff/precache-manifest.3d16cdb16c261eaa903c9b358b8af6da.js",
   "service-worker.js": "/danceoff/service-worker.js",
-  "static/css/main.e92f9240.chunk.css.map": "/danceoff/static/css/main.e92f9240.chunk.css.map",
+  "static/css/main.9149d210.chunk.css.map": "/danceoff/static/css/main.9149d210.chunk.css.map",
+  "static/media/RAHMAT_SIMPLE_2.mp4": "/danceoff/static/media/RAHMAT_SIMPLE_2.58582f69.mp4",
   "static/media/danceoff.png": "/danceoff/static/media/danceoff.8f298f1e.png",
   "static/media/logo.svg": "/danceoff/static/media/logo.5d5d9eef.svg",
-  "static/media/loop.21dce757.svg": "/danceoff/static/media/loop.21dce757.svg",
-  "static/media/video.mp4": "/danceoff/static/media/video.34a4fb22.mp4"
+  "static/media/loop.21dce757.svg": "/danceoff/static/media/loop.21dce757.svg"
 }
