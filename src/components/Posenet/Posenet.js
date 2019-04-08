@@ -1,5 +1,7 @@
 // ref: https://github.com/jscriptcoder/tfjs-posenet/blob/master/src/PoseNet/index.jsx
 
+// TODO: only show peak pose frame, other poses are semi transparent
+
 // main imports
 import React, { Component } from "react";
 import * as posenet from "@tensorflow-models/posenet";
@@ -12,10 +14,18 @@ import styles from "./index.module.css";
 // components
 import { isMobile, drawKeypoints, drawSkeleton } from "./helpers/utils";
 import scoreSimilarity from "./helpers/scorer";
+import generateScoreTimer from "./helpers/calculatePeakBeats";
 
 // ghost (the dance move you're competing with)
 import { DANCE_GHOST } from "../../lib/constants";
 const GHOST = DANCE_GHOST.poseRecords;
+
+// WHEN to score user
+const t = GHOST[GHOST.length - 1].timestamp;
+const SCORING_HEURISTIC = generateScoreTimer({
+  totalSecs: t,
+  pattern: [1, 3]
+});
 
 export default class PoseNetComponent extends Component {
   static defaultProps = {
@@ -41,7 +51,8 @@ export default class PoseNetComponent extends Component {
     record: false,
     recordVideo: false,
     maxFPS: 30,
-    compete: true
+    compete: true,
+    scoreByHeuristic: true
   };
 
   state = {
@@ -218,7 +229,8 @@ export default class PoseNetComponent extends Component {
       frontCamera,
       stop,
       maxFPS,
-      compete
+      compete,
+      scoreByHeuristic
     } = this.props;
 
     const { finalDims } = this.state;
@@ -228,6 +240,7 @@ export default class PoseNetComponent extends Component {
 
     const net = this.net;
     const video = this.video;
+    let heuristic = [...SCORING_HEURISTIC];
 
     const flipped = forceFlipHorizontal
       ? forceFlipHorizontal
@@ -397,13 +410,35 @@ export default class PoseNetComponent extends Component {
             GHOST
           );
 
-          console.log(similarity.score.highest);
+          //console.log("score: ", similarity.score.highest);
 
           const score = parseInt(similarity.score.normalized.toFixed(2));
-          this.setState(prev => ({
-            score: score,
-            totalScore: prev.totalScore + score
-          }));
+
+          if (!scoreByHeuristic) {
+            //console.log("scoring on every frame!");
+            this.setState(prev => ({
+              score: score,
+              totalScore: prev.totalScore + score
+            }));
+          } else {
+            // only add score if timestmap matches
+            let GHOST_timestamp = heuristic; // ref only, so shift will affect heuristic
+            const NOW_timestamp = (
+              (performance.now() - this.state.time) /
+              1000
+            ).toFixed(5);
+
+            // if current frame timestamp is equal or more than the next beat
+            if (GHOST_timestamp[0] <= NOW_timestamp && heuristic.length !== 0) {
+              console.log("score: ", score);
+              console.log("heuristic: ", heuristic);
+              this.setState(prev => ({
+                score: score,
+                totalScore: prev.totalScore + score
+              }));
+              heuristic.shift();
+            }
+          }
         }
       }
 
