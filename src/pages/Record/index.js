@@ -28,6 +28,9 @@ const Page = ({ onScore, onRestart }) => {
     if (type === "start") {
       setPhase("play");
       setRestarting(false);
+    } else if (type === "endless") {
+      setPhase("endless");
+      setRestarting(false);
     } else if (type === "end") {
       setPhase("submit");
       setRestarting(true);
@@ -63,6 +66,8 @@ const Page = ({ onScore, onRestart }) => {
         <div className={styles.modalStart}>
           <p>Ready to go?</p>
           <button onClick={() => onClick(type)}>START!</button>
+          <br />
+          <button onClick={() => onClick("endless")}>ENDLESS MODE!</button>
         </div>
       );
     } else if (type === "end") {
@@ -74,7 +79,7 @@ const Page = ({ onScore, onRestart }) => {
           <button onClick={() => onClick(type)}>SUBMIT</button>
         </div>
       );
-    } else if (type === "play") {
+    } else if (type === "play" || type === "endless") {
       return (
         <Posenet
           restart={restarting}
@@ -91,6 +96,7 @@ const Page = ({ onScore, onRestart }) => {
           algorithm={"single-pose"}
           record={true}
           recordVideo
+          endless={type === "endless" ? true : false}
         />
       );
     } else {

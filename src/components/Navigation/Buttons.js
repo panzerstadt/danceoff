@@ -23,7 +23,7 @@ const ModeButtons = ({
             padding: "8px 15px"
           }}
         >
-          WATCH ▶️
+          ▶️
         </button>
         <button
           className={
@@ -34,7 +34,7 @@ const ModeButtons = ({
             padding: "8px 15px"
           }}
         >
-          RECORD 📹
+          📹
         </button>
         <button
           className={
@@ -47,7 +47,7 @@ const ModeButtons = ({
             padding: "8px 15px"
           }}
         >
-          COMPETE ⚔️
+          ⚔️
         </button>
       </div>
     </div>

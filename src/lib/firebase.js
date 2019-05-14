@@ -9,6 +9,8 @@ const config = {
   messagingSenderId: process.env.messagingSenderId
 };
 
+// firebase console is under tliqundev@gmail.com
+
 const reactConfig = {};
 Object.keys(config).map(v => {
   reactConfig[v] = process.env[`REACT_APP_${v}`];

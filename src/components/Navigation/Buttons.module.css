@@ -1,7 +1,7 @@
 .modeButtons {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .toggleButton {
@@ -10,7 +10,7 @@
   width: 100%;
   background-color: rgba(255, 255, 255, 0.918);
 
-  padding: 10px;
+  /* padding: 10px; */
   border-right: 1px solid grey;
 }
 
@@ -24,15 +24,17 @@
 }
 
 .btnContainer {
-  border-radius: 8px;
+  width: 100%;
+  /* border-radius: 8px; */
 
   box-shadow: 0 0 15px #3a3a3a36;
-  width: 95%;
+  /* width: 95%; */
 }
 
 @media (min-width: 600px) {
   .btnContainer {
     width: 350px;
+    width: 100%;
   }
 
   .toggles {
@@ -45,12 +47,14 @@
   border: none;
   height: 50px;
 
-  font-size: 10px;
+  /* font-size: 10px; */
+  font-size: 15px;
+  background-color: white;
 }
 
 .btn:hover {
   color: red;
-  background-color: #baffff;
+  background-color: black;
 }
 
 .btn:focus {
@@ -59,17 +63,17 @@
 
 .btnLeft {
   composes: btn;
-  border-radius: 8px 0 0 8px;
+  /* border-radius: 8px 0 0 8px; */
 }
 
 .btnRight {
   composes: btn;
-  border-radius: 0 8px 8px 0;
+  /* border-radius: 0 8px 8px 0; */
 }
 
 .hasRecording {
-  background-color: #5fd49b;
-  color: white;
+  /* background-color: #5fd49b;
+  color: white; */
 }
 
 .hasRecordingMain {
@@ -78,6 +82,6 @@
 
 .hasRecordingSecondary {
   composes: hasRecording;
-  background-color: #ff8547;
-  color: white;
+  /* background-color: #ff8547;
+  color: white; */
 }

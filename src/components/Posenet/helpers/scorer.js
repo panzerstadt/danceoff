@@ -1,7 +1,7 @@
 import { extent } from "d3-array";
 import { cosineSimilarity } from "./cosineSimilarity";
 
-const SCORE_MIN = 0.9;
+const SCORE_MIN = 0.8;
 
 function remap(value, low1, high1, low2, high2) {
   return low2 + ((high2 - low2) * (value - low1)) / (high1 - low1);

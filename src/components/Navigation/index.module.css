@@ -1,6 +1,6 @@
 .nav {
   position: fixed;
-  bottom: 15px;
+  bottom: 0;
   width: inherit;
   max-width: inherit;
   display: flex;

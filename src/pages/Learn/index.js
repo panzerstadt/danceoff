@@ -5,11 +5,15 @@ import { Direction, Slider, PlayerIcon } from "react-player-controls";
 import styles from "./index.module.css";
 
 import { ReactComponent as LoopIcon } from "../../assets/svg/loop.svg";
-import video from "../../assets/videos/video.mp4";
+import video from "../../assets/videos/BASEBALL.mp4";
 
 const Page = () => {
   const [loop, setLoop] = useState(true);
-  const [play, setPlay] = useState(true);
+  const [play, setPlay] = useState(false);
+  useEffect(() => {
+    // setPlay(true);
+    return () => setPlay(false);
+  }, []);
 
   // update slider progress
   const [progress, setProgress] = useState();

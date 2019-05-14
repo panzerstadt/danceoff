@@ -41,7 +41,8 @@ export default class PoseNetComponent extends Component {
     record: false,
     recordVideo: false,
     maxFPS: 30,
-    compete: true
+    compete: true,
+    endless: false
   };
 
   state = {
@@ -51,7 +52,6 @@ export default class PoseNetComponent extends Component {
     trace: [],
     frames: [],
     ghostIndex: 0,
-    repeat: false,
     score: 0,
     totalScore: 0,
     scoreOpacity: 0,
@@ -342,9 +342,13 @@ export default class PoseNetComponent extends Component {
           console.log("seconds elapsed = " + Math.floor(millis / 1000));
 
           // for now, repeat loop
-          if (this.state.repeat) {
+          if (this.props.endless) {
             // ENDLESS MODE FTW
-            this.setState({ ghostIndex: 0 });
+            this.setState({
+              ghostIndex: 0,
+              time: performance.now(),
+              totalScore: 0
+            });
           } else {
             this.stopCamera();
             if (this.props.onEnd) {
@@ -557,7 +561,7 @@ export default class PoseNetComponent extends Component {
           className={styles.posenetCanvasContainer}
           style={{ width: this.props.videoWidth, overflow: "hidden" }}
         >
-          <Webcam ref={this.getVideo} playsInline />
+          <Webcam ref={this.getVideo} />
           <canvas className={styles.posenetCanvas} ref={this.getCanvas} />
         </div>
       </div>
