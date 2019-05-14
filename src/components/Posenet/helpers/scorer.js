@@ -138,8 +138,10 @@ const scoreSimilarity = (
       };
     }
 
-    const comparisonPose = vectorizePose(v.pose, true, true);
-    const comparisonPoseConfidence = v.pose.score;
+    const vs_pose = v.pose.pose[0];
+
+    const comparisonPose = vectorizePose(vs_pose, true, true);
+    const comparisonPoseConfidence = vs_pose.score;
     const comparisonPoseDistance = v.distance;
     const comparisonPoseIndex = v.index;
 
