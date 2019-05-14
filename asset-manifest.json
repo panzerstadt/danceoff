@@ -1,17 +1,18 @@
 {
-  "main.css": "/danceoff/static/css/main.e0f735b7.chunk.css",
-  "main.js": "/danceoff/static/js/main.754c4c17.chunk.js",
-  "main.js.map": "/danceoff/static/js/main.754c4c17.chunk.js.map",
+  "main.css": "/danceoff/static/css/main.7d884956.chunk.css",
+  "main.js": "/danceoff/static/js/main.3fb58ed4.chunk.js",
+  "main.js.map": "/danceoff/static/js/main.3fb58ed4.chunk.js.map",
   "runtime~main.js": "/danceoff/static/js/runtime~main.6509b7b9.js",
   "runtime~main.js.map": "/danceoff/static/js/runtime~main.6509b7b9.js.map",
-  "static/js/2.e6061b78.chunk.js": "/danceoff/static/js/2.e6061b78.chunk.js",
-  "static/js/2.e6061b78.chunk.js.map": "/danceoff/static/js/2.e6061b78.chunk.js.map",
+  "static/js/2.9702885d.chunk.js": "/danceoff/static/js/2.9702885d.chunk.js",
+  "static/js/2.9702885d.chunk.js.map": "/danceoff/static/js/2.9702885d.chunk.js.map",
   "index.html": "/danceoff/index.html",
-  "precache-manifest.1b4edfe2b34853d93f2163b7c756c79d.js": "/danceoff/precache-manifest.1b4edfe2b34853d93f2163b7c756c79d.js",
+  "precache-manifest.6a3b7963b43fe1b1bc02acbc2a93b559.js": "/danceoff/precache-manifest.6a3b7963b43fe1b1bc02acbc2a93b559.js",
   "service-worker.js": "/danceoff/service-worker.js",
-  "static/css/main.e0f735b7.chunk.css.map": "/danceoff/static/css/main.e0f735b7.chunk.css.map",
+  "static/css/main.7d884956.chunk.css.map": "/danceoff/static/css/main.7d884956.chunk.css.map",
+  "static/media/BASEBALL.mp4": "/danceoff/static/media/BASEBALL.6c3859ba.mp4",
+  "static/media/baseball.jpg": "/danceoff/static/media/baseball.caad1c74.jpg",
   "static/media/danceoff.png": "/danceoff/static/media/danceoff.8f298f1e.png",
   "static/media/logo.svg": "/danceoff/static/media/logo.5d5d9eef.svg",
-  "static/media/loop.21dce757.svg": "/danceoff/static/media/loop.21dce757.svg",
-  "static/media/video.mp4": "/danceoff/static/media/video.40368504.mp4"
+  "static/media/loop.21dce757.svg": "/danceoff/static/media/loop.21dce757.svg"
 }
