@@ -24,19 +24,19 @@ self.__precacheManifest = [
     "url": "/danceoff/static/js/runtime~main.6509b7b9.js"
   },
   {
-    "revision": "218d091aec3a59ec2d2b",
-    "url": "/danceoff/static/js/main.3fb58ed4.chunk.js"
+    "revision": "6c3172512836373b2de5",
+    "url": "/danceoff/static/js/main.753899fc.chunk.js"
   },
   {
     "revision": "9d0acb1c96b931e0e28b",
     "url": "/danceoff/static/js/2.9702885d.chunk.js"
   },
   {
-    "revision": "218d091aec3a59ec2d2b",
-    "url": "/danceoff/static/css/main.7d884956.chunk.css"
+    "revision": "6c3172512836373b2de5",
+    "url": "/danceoff/static/css/main.ff57edee.chunk.css"
   },
   {
-    "revision": "e4a27ff04fe1fd257f17a056f8bf309d",
+    "revision": "b31784e5b8399394ca409ba33bc8d5d3",
     "url": "/danceoff/index.html"
   }
 ];
