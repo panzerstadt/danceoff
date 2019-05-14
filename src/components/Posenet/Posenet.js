@@ -12,8 +12,8 @@ import { isMobile, drawKeypoints, drawSkeleton } from "./helpers/utils";
 import scoreSimilarity from "./helpers/scorer";
 
 // ghost (the dance move you're competing with)
-import DANCER from "./data/ROBOT_RAHMAT.json";
-const GHOST = DANCER.poseRecords;
+import RECORD from "./data/ROBOT_RAHMAT.json";
+const GHOST = RECORD.poseRecords;
 
 export default class PoseNetComponent extends Component {
   static defaultProps = {
@@ -329,8 +329,10 @@ export default class PoseNetComponent extends Component {
           const g_keypoints = GHOST[this.state.ghostIndex].keypoints;
           const g_score = GHOST[this.state.ghostIndex].score;
 
+          console.log("keypoints: ", g_keypoints);
+
           if (g_score >= minPoseConfidence) {
-            // only update keypoints when it passes the confidene threshold
+            // only update keypoints when it passes the confidence threshold
             this.good_keypoints = g_keypoints;
           }
           // else use the previous one
@@ -360,7 +362,7 @@ export default class PoseNetComponent extends Component {
             GHOST
           );
 
-          console.log(similarity.score.highest);
+          console.log("similarity; ", similarity.score.highest);
 
           const score = parseInt(similarity.score.normalized.toFixed(2));
           this.setState(prev => ({

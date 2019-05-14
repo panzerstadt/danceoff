@@ -1,3 +1,6 @@
+ref: https://www.tensorflow.org/lite/models/pose_estimation/overview
+(check out use cases)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -6,6 +6,7 @@ import Button from "../../components/Button";
 
 // assets
 import dance from "../../assets/images/danceoff.png";
+import baseball from "../../assets/images/baseball.jpg";
 
 const Page = ({ onClick }) => {
   useEffect(() => {
@@ -16,8 +17,10 @@ const Page = ({ onClick }) => {
   }, []);
   return (
     <div className={styles.page}>
-      <img className={styles.hero} src={dance} alt="danceoff!" />
-      <Button theme="intro" onClick={onClick}>
+      <span className={styles.heroTitle}>Batterly</span>
+      <span className={styles.heroText}>be your baseball hero.</span>
+      <img className={styles.hero} src={baseball} alt="baseball!" />
+      <Button className={styles.startBtn} theme="intro" onClick={onClick}>
         START
       </Button>
     </div>

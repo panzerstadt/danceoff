@@ -1,5 +1,6 @@
 .page {
   composes: page from "../Layout.module.css";
+  position: relative;
   overflow: hidden;
   z-index: 10;
 }
@@ -14,16 +15,35 @@
 .startBtn {
   width: 200px;
   position: absolute;
-  bottom: 30%;
-  background-color: #0ed0d7;
+  top: 350px;
+  background-color: #ffffff;
   font-size: 15px;
-  font-weight: 500;
-  color: white;
-  padding: 10px 20px;
+  font-weight: 800;
+  color: rgb(0, 0, 0);
+  padding: 10px 15px;
   border-radius: 999px;
-  border: 1.5px solid white;
+  border: 1.5px solid rgb(0, 0, 0);
 }
 
 .startBtn:focus {
   outline: none;
+}
+
+.heroTitle {
+  position: absolute;
+  top: 180px;
+  font-weight: 800;
+  font-size: 80px;
+  color: white;
+  font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
+}
+
+.heroText {
+  position: absolute;
+  text-align: center;
+  top: 260px;
+  font-size: 30px;
+  width: 100%;
+  color: white;
+  font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
 }
